@@ -1,7 +1,7 @@
 import React, { useState, Component } from 'react';
 import { View, Text, Button, ToastAndroid, TextInput, FlatList, TouchableOpacity } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import TodoBox from './todoBox'
+import TodoBox from '../components/todoBox'
 
 export default function App() {
 
