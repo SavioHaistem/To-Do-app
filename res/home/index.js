@@ -12,7 +12,6 @@ export default function App() {
 
   return(
     <>
-        
     <FlatList 
       data={ToDo}
       renderItem={({item}) => (
