@@ -1,6 +1,7 @@
-import React, { useState, Component } from 'react';
-import { View, Text, Button, ToastAndroid, TextInput, FlatList, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Button, ToastAndroid, TextInput, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
+import { create } from 'react-test-renderer';
 import TodoBox from '../components/todoBox'
 
 export default function App() {
@@ -10,13 +11,40 @@ export default function App() {
       { text: 'Fazer coco', key: '2' }
   ])
 
+  const pressHandler = (key) => {
+    setToDo((Todos) => {
+      return Todos.filter(ToDo => ToDo.key != key );
+    })
+  }
+
+
+
   return(
     <>
     <FlatList 
-      data={ToDo}
-      renderItem={({item}) => (
-        <TodoBox item={item}/>
-          )} />
+        data={ToDo}
+        renderItem={({item}) => (
+          <TodoBox item={item} pressHandler={pressHandler}/>
+          )} />    
+
+    <TextInput
+      style={Style.TextInput}
+    />
+    <Button
+      title={'Adicionar Tarefa'}
+      onPress={()=>{}}
+      style={{}}
+    />
     </>
   )
 }
+
+const Style = StyleSheet.create({
+  TextInput: {
+    paddingLeft: 15,
+    borderRadius: 100,
+    borderWidth: 1,
+    marginLeft: 15,
+    marginRight: 15,
+  },
+})
