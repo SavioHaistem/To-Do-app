@@ -5,7 +5,9 @@ export default function TodoBox({ item, pressHandler }) {
     return(
 
         <TouchableOpacity onPress={()=>{pressHandler(item.key)}}>
-            <Text style={styles.item}> {item.text} </Text>
+            <View>
+                <Text style={styles.item}> {item.text} </Text>
+            </View>
         </TouchableOpacity>
             
     )
