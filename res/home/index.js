@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, Button, ToastAndroid, TextInput, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { create } from 'react-test-renderer';
 import TodoBox from '../components/todoBox';
-import { Icon } from 'react-native-elements';
 export default function App() {
 
   const [ToDo, setToDo] = useState([
@@ -27,21 +25,28 @@ export default function App() {
           )} />    
 
     <TextInput
-      style={Style.TextInput}
+      style={styles.TextInput}
     />
+    <Button 
+      title={'aperte'}
+      style={styles.button}
+    />
+
     </>
   )
 }
 
-const Style = StyleSheet.create({
+const styles = StyleSheet.create({
   TextInput: {
     paddingLeft: 15,
-    borderRadius: 100,
+    borderRadius: 17,
     borderWidth: 1,
     marginLeft: 15,
     marginRight: 15,
+    marginBottom: 15,
   },
   button: {
-    color: 'red',
+    padding: 50,
+    backgroundColor: 'red',
   }
 })
