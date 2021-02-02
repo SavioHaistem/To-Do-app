@@ -3,7 +3,24 @@ import { Text, TouchableOpacity, StyleSheet, ToastAndroid, View, Button } from '
 import { Swipeable } from 'react-native-gesture-handler';
 
 export default function TodoBox({ item, pressHandler }) {
-    
+
+    const LeftAction = ()=>{
+        return(
+            <View>
+                <TouchableOpacity onPress={() => {ToastAndroid.show('ola',ToastAndroid.SHORT)}}>
+                    <Text style={styles.text}> concluido </Text>
+                </TouchableOpacity>
+            </View>
+        )
+    }
+    const RightAction = () => {
+        return(
+            <TouchableOpacity>
+                <Text style={styles.text}> Deletar </Text>
+            </TouchableOpacity>
+        )
+    }
+
     return(
 
         <Swipeable renderRightActions={LeftAction} renderLeftActions={RightAction}>
@@ -11,27 +28,14 @@ export default function TodoBox({ item, pressHandler }) {
         </Swipeable>
             
     )
+
+    
 }
-const LeftAction = ()=>{
-    return(
-        <View>
-            <TouchableOpacity style={styles.text}>
-                <Text Style={styles.text}> foi </Text>
-            </TouchableOpacity>
-        </View>
-    )
-}
-const RightAction = () => {
-    return(
-        <View>
-            <Text> Deletar </Text>
-        </View>
-    )
-}
+
+
 
 const styles = StyleSheet.create({
     item: {
-        borderStyle:'dotted solid double',
         backgroundColor: 'white',
         borderRadius: 17,
         padding: 16,
@@ -43,6 +47,12 @@ const styles = StyleSheet.create({
         marginRight: 20,
     },
     text: {
-        color: 'red'
-    },
+        fontFamily: 'fantasy',
+        textAlign: 'center',
+        lineHeight: 60,
+        color: 'white',
+        backgroundColor: '#a536b9',
+        width: 68,
+        height: 68
+    }
 })

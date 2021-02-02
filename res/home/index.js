@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, Button, ToastAndroid, TextInput, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import TodoBox from '../components/todoBox';
+import button from '../components/button'
 export default function App() {
 
   const [ToDo, setToDo] = useState([
