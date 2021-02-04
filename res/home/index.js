@@ -1,38 +1,37 @@
 import React, { useState } from 'react';
-import { View, Text, Button, ToastAndroid, TextInput, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { View, Text, Button, ToastAndroid, TextInput, TouchableHighlight, FlatList, TouchableOpacity, StyleSheet, Touchable, TouchableOpacityBase } from 'react-native';
 import TodoBox from '../components/todoBox';
-import button from '../components/button'
 export default function App() {
 
   const [ToDo, setToDo] = useState([
-      { text: 'Fazer as compras', key: '1' },
-      { text: 'Fazer coco', key: '2' }
+      { text: 'Fazer as compras'},
+      { text: 'Fazer coco'},
+      { text: 'ir fazer coisa' }
   ])
+  const [Task, setTask] = useState([])
 
-  const pressHandler = (key) => {
-    setToDo((Todos) => {
-      return Todos.filter(ToDo => ToDo.key != key );
-    })
+  const setTasks = function() {
+    setToDo([{text: `${Task}`}])
   }
-
 
   return(
     <>
-    <FlatList 
-        data={ToDo}
-        renderItem={({item}) => (
-          <TodoBox item={item} pressHandler={pressHandler}/>
-          )} />    
+      <FlatList 
+          data={ToDo}
+          renderItem={({item}) => (
+            <TodoBox item={item} />
+            )} />    
 
-    <TextInput
-      style={styles.TextInput}
-    />
-    <Button 
-      title={'aperte'}
-      style={styles.button}
-    />
-
+      <TextInput
+        style={styles.TextInput}
+        value={Task}
+        onChangeText={(value)=>{setTask(value)}}
+      />
+      <View style={styles.ViewtouchableAdd}>
+        <TouchableHighlight backgroundColor2={'blue'} style={styles.touchableAdd} onPress={setTasks}>
+          <Text style={{color: 'white', fontWeight: 'bold'}}> Adicionar </Text>
+        </TouchableHighlight>
+      </View>
     </>
   )
 }
@@ -49,5 +48,17 @@ const styles = StyleSheet.create({
   button: {
     padding: 50,
     backgroundColor: 'red',
-  }
+  },
+  touchableAdd: {
+    justifyContent: 'center',
+    backgroundColor: '#835799',
+
+    width: 350, height: 50,
+    alignItems: 'center',
+    borderRadius: 100
+  },
+  ViewtouchableAdd: {
+    alignContent: 'center',
+    alignItems: 'center'
+  },
 })

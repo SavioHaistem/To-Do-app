@@ -17,7 +17,7 @@ export default function App() {
               name='Home' 
               component={Home}
                 options={{
-                  title: "TextApp",
+                  title: "ToDo App",
                   headerTitleStyle:{
                     fontFamily: "Normal" 
                   }
@@ -27,7 +27,8 @@ export default function App() {
               component={Info}
                 options={{
                   title: "Informações"
-                }} />
+                }} 
+                />
           </Stack.Navigator>
       </NavigationContainer>
   );

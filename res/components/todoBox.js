@@ -2,31 +2,36 @@ import React from 'react';
 import { Text, TouchableOpacity, StyleSheet, ToastAndroid, View, Button } from 'react-native';
 import { Swipeable } from 'react-native-gesture-handler';
 
-export default function TodoBox({ item, pressHandler }) {
+export default function TodoBox({ item }) {
 
     const LeftAction = ()=>{
         return(
-            <View>
+            <View style={{flex: 1, marginTop: 15}}>
                 <TouchableOpacity onPress={() => {ToastAndroid.show('ola',ToastAndroid.SHORT)}}>
-                    <Text style={styles.text}> concluido </Text>
+                    <Text style={styles.textL}> concluido </Text>
                 </TouchableOpacity>
             </View>
         )
     }
-    const RightAction = () => {
+    const RightAction = ()=>{
         return(
-            <TouchableOpacity>
-                <Text style={styles.text}> Deletar </Text>
-            </TouchableOpacity>
+            <View style={{flex: 1, marginTop: 15}}>
+                <View>
+                    <Text style={styles.textR}> Deletar </Text>
+                </View>
+            </View>
         )
     }
 
-    return(
 
-        <Swipeable renderRightActions={LeftAction} renderLeftActions={RightAction}>
-                <Text style={styles.item}> {item.text} </Text>  
-        </Swipeable>
-            
+    return(
+    
+            <Swipeable renderRightActions={LeftAction} renderLeftActions={RightAction}>
+              <View style={styles.item}>
+                <Text > {item.text} </Text>
+              </View>  
+            </Swipeable>
+    
     )
 
     
@@ -36,23 +41,28 @@ export default function TodoBox({ item, pressHandler }) {
 
 const styles = StyleSheet.create({
     item: {
+        flex: 1,
         backgroundColor: 'white',
-        borderRadius: 17,
         padding: 16,
+        marginTop: 15,
         textAlign: 'center',
-        marginTop: 10,
         borderColor: 'black',
         borderWidth: 1,
-        marginLeft: 20,
-        marginRight: 20,
+
     },
-    text: {
+    textL: {
         fontFamily: 'fantasy',
         textAlign: 'center',
         lineHeight: 60,
         color: 'white',
-        backgroundColor: '#a536b9',
-        width: 68,
-        height: 68
+        backgroundColor: '#30c549',
+
+    },
+    textR: {
+        fontFamily: 'fantasy',
+        textAlign: 'center',
+        lineHeight: 60,
+        color: 'white',
+        backgroundColor: '#ff4161',
     }
 })
